@@ -1,0 +1,78 @@
+/* Additional styles for the compare page */
+.forecast-days {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.forecast-day {
+    flex: 1;
+    min-width: 60px;
+    text-align: center;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin: 0 2px;
+}
+
+.day-name {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.forecast-temp {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    font-size: 12px;
+}
+
+.forecast-temp .max {
+    font-weight: bold;
+}
+
+.forecast-temp .min {
+    opacity: 0.7;
+}
+
+.city-details-extended {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Make sure the chart container has a proper height */
+.chart-wrapper {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+/* Ensure the chart canvas has a proper background */
+#comparison-chart {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Add some debugging styles to highlight missing elements */
+.debug-missing {
+    border: 2px solid red !important;
+    position: relative;
+}
+
+.debug-missing::after {
+    content: "Element not found";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+}

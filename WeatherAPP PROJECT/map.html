@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Map</title>
+    <!-- Load Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #map {
+            height: 100vh;
+            width: calc(100% - 60px);
+            margin-left: 60px;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .map-html {
+            overflow: hidden;
+        }
+
+        .side-panel:hover~#map {
+            width: calc(100% - 250px);
+            margin-left: 250px;
+        }
+    </style>
+</head>
+
+<body class="map-html">
+    <aside class="side-panel">
+        <div class="logo">
+            <img src="assets/logo.jpg" alt="Logo">
+        </div>
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li><a href="home.html" data-page="home"><i class="fa-solid fa-home"></i><span>Home</span></a></li>
+                    <li><a href="7-day-forecast.html" data-page="7-day-forecast"><i
+                                class="fa-solid fa-calendar-days"></i><span>7-Day Forecast</span></a></li>
+                    <li><a href="hourly-forecast.html" data-page="hourly-forecast"><i
+                                class="fa-solid fa-clock"></i><span>Hourly Forecast</span></a></li>
+                    <li><a href="radar.html" data-page="radar"><i
+                                class="fa-solid fa-satellite"></i><span>Radar</span></a></li>
+                    <li><a href="alerts.html" data-page="alerts"><i class="fa-solid fa-bell"></i><span>Alerts</span></a>
+                    </li>
+                    <li><a href="air-quality.html" data-page="air-quality"><i class="fa-solid fa-smog"></i><span>Air
+                                Quality</span></a></li>
+                    <li><a href="compare.html" data-page="compare"><i
+                                class="fa-solid fa-scale-balanced"></i><span>Compare</span></a></li>
+                    <li><a href="favorites.html" data-page="favorites"><i
+                                class="fa-solid fa-heart"></i><span>Favorites</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+    <div id="map"></div>
+
+    <!-- Load Font Awesome -->
+    <script src="https://kit.fontawesome.com/3428b215b8.js" crossorigin="anonymous"></script>
+    <!-- Load Leaflet JS before our script -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Load our script last -->
+    <script src="map.js"></script>
+</body>
+
+</html>

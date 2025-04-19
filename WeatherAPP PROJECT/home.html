@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside class="side-panel">
+        <div class="logo">
+            <img src="assets/logo.jpg" alt="Logo">
+        </div>
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li><a href="map.html"><i class="fa-solid fa-map"></i><span>Map</span></a></li>
+                    <li><a href="7-day-forecast.html"><i class="fa-solid fa-calendar-days"></i><span>7-Day Forecast</span></a></li>
+                    <li><a href="hourly-forecast.html"><i class="fa-solid fa-clock"></i><span>Hourly Forecast</span></a></li>
+                    <li><a href="radar.html"><i class="fa-solid fa-satellite"></i><span>Radar</span></a></li>
+                    <li><a href="alerts.html"><i class="fa-solid fa-bell"></i><span>Alerts</span></a></li>
+                    <li><a href="air-quality.html"><i class="fa-solid fa-smog"></i><span>Air Quality</span></a></li>
+                    <li><a href="compare.html"><i class="fa-solid fa-scale-balanced"></i><span>Compare</span></a></li>
+                    <li><a href="favorites.html"><i class="fa-solid fa-heart"></i><span>Favorites</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    
+    <div class="container">
+        <button class="favorite-btn">
+            <i class="fa-regular fa-heart"></i>
+        </button>
+        
+        <div class="header">
+            <div class="search-box">
+                <div class="input">
+                    <input type="text" placeholder="Enter your location" class="input-box" id="searchBox" autocomplete="on">
+                    <button class="cancel-btn">
+                        <p id="cancelBtn">
+                            <i class="fa-solid fa-xmark"></i>
+                        </p>
+                    </button>
+                </div>
+                <button class="location">
+                    <p id="locationid">
+                        <img class="locationicon" src="./assets/location.webp" alt="locate-logo">
+                    </p>
+                </button>
+                <button class="fa-solid fa-magnifying-glass" id="searchBtn"></button>
+            </div>
+        </div>
+
+        <div class="location-not-found">
+            <h1>Sorry, Location not found!</h1>
+            <img src="/assets/404.png" alt="404 Error">
+        </div>
+
+        <div class="weather-body">
+            <img src="/assets/cloud.png" alt="Weather Image" class="weather-img">
+
+            <div class="weather-box">
+                <p class="temperature">0 <sup>°C</sup></p>
+                <div class="icon">
+                    <p class="description">light rain</p>
+                    <img src="assets/smallicon.png" alt="small-icon" id="small-icon">
+                </div>
+            </div>
+
+            <div class="weather-details">
+                <div class="humidity">
+                    <i class="fa-sharp fa-solid fa-droplet"></i>
+                    <div class="text">
+                        <span id="humidity">45%</span>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+
+                <div class="wind">
+                    <i class="fa-solid fa-wind"></i>
+                    <div class="text">
+                        <span id="wind-speed">12Km/H</span>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="additional-info">
+                <!-- Additional weather information will be added here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/3428b215b8.js" crossorigin="anonymous"></script>
+</body>
+</html>

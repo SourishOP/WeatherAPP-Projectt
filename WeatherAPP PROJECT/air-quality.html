@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Index</title>
+    <link rel="stylesheet" href="air-quality.css">
+    <script src="https://kit.fontawesome.com/3428b215b8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <aside class="side-panel">
+        <div class="logo">
+            <img src="assets/logo.jpg" alt="Logo">
+        </div>
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li><a href="home.html" class="active"><i class="fa-solid fa-home"></i><span>Home</span></a></li>
+                    <li><a href="map.html"><i class="fa-solid fa-map"></i><span>Map</span></a></li>
+                    <li><a href="7-day-forecast.html"><i class="fa-solid fa-calendar-days"></i><span>7-Day Forecast</span></a>
+                    </li>
+                    <li><a href="hourly-forecast.html"><i class="fa-solid fa-clock"></i><span>Hourly Forecast</span></a></li>
+                    <li><a href="radar.html"><i class="fa-solid fa-satellite"></i><span>Radar</span></a></li>
+                    <li><a href="alerts.html"><i class="fa-solid fa-bell"></i><span>Alerts</span></a></li>
+                    <li><a href="compare.html"><i class="fa-solid fa-scale-balanced"></i><span>Compare</span></a></li>
+                    <li><a href="favorites.html"><i class="fa-solid fa-heart"></i><span>Favorites</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+    <div class="container">
+        <h1 class="title">Air Quality Index</h1>
+        <div class="aqi-container">
+            <div class="aqi-main">
+                <div class="aqi-gauge" id="aqi-gauge">
+                    <div class="gauge-value">
+                        <span id="aqi-value">--</span>
+                        <span class="aqi-unit">AQI</span>
+                    </div>
+                    <div class="gauge-label" id="aqi-label">Loading...</div>
+                    <svg class="gauge-svg" viewBox="0 0 120 120">
+                        <circle class="gauge-background" cx="60" cy="60" r="50"></circle>
+                        <circle class="gauge-progress" id="gauge-progress" cx="60" cy="60" r="50" stroke-dasharray="314" stroke-dashoffset="314"></circle>
+                        <text class="gauge-text" x="60" y="60" text-anchor="middle" dominant-baseline="middle"></text>
+                    </svg>
+                </div>
+                <div class="aqi-info">
+                    <div class="location-info">
+                        <h2>Location: <span id="aqi-location">Loading...</span></h2>
+                        <p>Last updated: <span id="last-updated">Loading...</span></p>
+                    </div>
+                    <div class="aqi-recommendation" id="aqi-recommendation">
+                        <!-- Recommendations will be added here -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pollutants-container">
+                <h3>Pollutant Levels</h3>
+                <div class="pollutants-grid" id="pollutants-grid">
+                    <!-- Pollutant items will be added here -->
+                    <div class="loading-spinner">
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                        <p>Loading pollutant data...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="aqi-forecast">
+                <h3>Air Quality Forecast</h3>
+                <div class="forecast-grid" id="forecast-grid">
+                    <!-- Forecast items will be added here -->
+                </div>
+            </div>
+            
+            <div class="aqi-scale">
+                <h3>AQI Scale</h3>
+                <div class="scale-container">
+                    <div class="scale-item good">
+                        <div class="scale-range">0-50</div>
+                        <div class="scale-label">Good</div>
+                    </div>
+                    <div class="scale-item moderate">
+                        <div class="scale-range">51-100</div>
+                        <div class="scale-label">Moderate</div>
+                    </div>
+                    <div class="scale-item unhealthy-sensitive">
+                        <div class="scale-range">101-150</div>
+                        <div class="scale-label">Unhealthy for Sensitive Groups</div>
+                    </div>
+                    <div class="scale-item unhealthy">
+                        <div class="scale-range">151-200</div>
+                        <div class="scale-label">Unhealthy</div>
+                    </div>
+                    <div class="scale-item very-unhealthy">
+                        <div class="scale-range">201-300</div>
+                        <div class="scale-label">Very Unhealthy</div>
+                    </div>
+                    <div class="scale-item hazardous">
+                        <div class="scale-range">301+</div>
+                        <div class="scale-label">Hazardous</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="air-quality.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Comparison</title>
+    <link rel="stylesheet" href="compare.css">
+    <link rel="stylesheet" href="compare-additional.css">
+    <!-- FontAwesome for icons (optional, but referenced in JS) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <aside class="side-panel">
+        <div class="logo">
+            <img src="assets/logo.jpg" alt="Logo">
+        </div>
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li><a href="home.html"><i class="fa-solid fa-home"></i><span>Home</span></a></li>
+                    <li><a href="map.html"><i class="fa-solid fa-map"></i><span>Map</span></a></li>
+                    <li><a href="7-day-forecast.html"><i class="fa-solid fa-calendar-days"></i><span>7-Day
+                                Forecast</span></a></li>
+                    <li><a href="hourly-forecast.html"><i class="fa-solid fa-clock"></i><span>Hourly Forecast</span></a>
+                    </li>
+                    <li><a href="radar.html"><i class="fa-solid fa-satellite"></i><span>Radar</span></a></li>
+                    <li><a href="alerts.html"><i class="fa-solid fa-bell"></i><span>Alerts</span></a></li>
+                    <li><a href="air-quality.html"><i class="fa-solid fa-smog"></i><span>Air Quality</span></a></li>
+                    <li><a href="favorites.html" class="active"><i class="fa-solid fa-heart"></i><span>Favorites</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <div class="container">
+        <h1 class="title">Weather Comparison</h1>
+
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="city-search" placeholder="Enter city name...">
+                <button id="add-city-btn"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="search-options">
+                <button class="option-btn" id="compare-favorites"><i class="fa-solid fa-heart"></i> Compare
+                    Favorites</button>
+                <button class="option-btn" id="clear-all"><i class="fa-solid fa-trash"></i> Clear All</button>
+            </div>
+        </div>
+
+        <div id="comparison-container" class="comparison-container"></div>
+
+        <div class="comparison-tabs">
+            <button class="tab-btn active" data-tab="current">Current Weather</button>
+            <button class="tab-btn" data-tab="forecast">5-Day Forecast</button>
+            <button class="tab-btn" data-tab="details">Weather Details</button>
+            <button class="tab-btn" data-tab="charts">Charts</button>
+        </div>
+
+        <div class="tab-content">
+            <div id="current-tab" class="tab-pane active">
+                <div id="current-comparison" class="comparison-grid"></div>
+            </div>
+            <div id="forecast-tab" class="tab-pane">
+                <div id="forecast-comparison" class="comparison-grid"></div>
+            </div>
+            <div id="details-tab" class="tab-pane">
+                <div id="details-comparison" class="comparison-grid"></div>
+            </div>
+            <div id="charts-tab" class="tab-pane">
+                <div class="chart-selection">
+                    <select id="chart-type">
+                        <option value="temperature">Temperature</option>
+                        <option value="humidity">Humidity</option>
+                        <option value="wind">Wind Speed</option>
+                        <option value="pressure">Pressure</option>
+                    </select>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="comparison-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Your compare.js script -->
+    <script src="compare.js"></script>
+</body>
+
+</html>

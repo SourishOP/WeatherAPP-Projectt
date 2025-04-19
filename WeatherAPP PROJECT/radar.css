@@ -1,0 +1,336 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  font-family: sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  background-image: url(./assets/background.avif);
+  background-repeat: no-repeat, repeat;
+  background-size: cover, contain;
+  background-position: center, top;
+}
+
+.side-panel {
+  width: 60px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: rgba(44, 62, 80, 0.1);
+  backdrop-filter: blur(15px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: width 0.3s ease, background 0.3s ease;
+  overflow: hidden;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.side-panel:hover {
+  width: 250px;
+  background: rgba(44, 62, 80, 0.6);
+}
+
+.menu {
+  margin-top: 10px;
+}
+
+.logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo img {
+  width: 50px;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.side-panel:hover .logo img {
+  transform: scale(1.5);
+}
+
+.side-panel nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.side-panel nav ul li {
+  margin: 15px 0;
+}
+
+.side-panel nav ul li a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s ease;
+  font-size: 16px;
+  will-change: transform, background-color;
+}
+
+.side-panel nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(10px);
+}
+
+.side-panel nav ul li a i {
+  font-size: 24px;
+  width: 40px;
+  text-align: center;
+}
+
+.side-panel nav ul li a span {
+  margin-left: 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateX(-20px);
+  will-change: opacity, transform;
+}
+
+.side-panel:hover nav ul li a span {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  height: min-content;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: margin-left 0.3s ease;
+  background-image: url(./assets/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.side-panel:hover ~ .container {
+  margin-left: 200px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8);
+}
+
+.radar-container {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto auto;
+  gap: 15px;
+  grid-template-areas:
+    "controls map"
+    "info map";
+}
+
+.radar-controls {
+  grid-area: controls;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.layer-selector,
+.time-controls {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.layer-selector h3,
+.time-controls h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.layer-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.layer-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.layer-options label:hover {
+  transform: scale(1.05);
+  color: #00ffff;
+}
+
+.layer-options input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.animation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.animation-buttons button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.animation-buttons button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.time-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.time-slider input {
+  width: 100%;
+  cursor: pointer;
+}
+
+.time-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.radar-map {
+  grid-area: map;
+  height: 500px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.radar-info {
+  grid-area: info;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.location-info h3,
+.radar-legend h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.location-info p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.radar-legend .legend-gradient {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.radar-legend .gradient {
+  height: 15px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #3498db, #2ecc71, #f1c40f, #e74c3c);
+}
+
+.legend-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+
+@media (max-width: 950px) {
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .radar-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "controls"
+      "map"
+      "info";
+  }
+
+  .radar-map {
+    height: 400px;
+  }
+
+  .radar-controls {
+    flex-direction: row;
+  }
+
+  .layer-selector,
+  .time-controls {
+    flex: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .radar-controls {
+    flex-direction: column;
+  }
+
+  .radar-map {
+    height: 300px;
+  }
+}

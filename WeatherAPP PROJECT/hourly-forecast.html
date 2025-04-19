@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hourly Weather Forecast</title>
+    <link rel="stylesheet" href="hourly-forecast.css">
+    <script src="https://kit.fontawesome.com/3428b215b8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <aside class="side-panel">
+        <div class="logo">
+            <img src="assets/logo.jpg" alt="Logo">
+        </div>
+        <div class="menu">
+          <nav>
+            <ul>
+              <li><a href="home.html" class="active"><i class="fa-solid fa-home"></i><span>Home</span></a></li>
+              <li><a href="map.html"><i class="fa-solid fa-map"></i><span>Map</span></a></li>
+              <li><a href="7-day-forecast.html"><i class="fa-solid fa-calendar-days"></i><span>7-Day Forecast</span></a></li>
+              <li><a href="radar.html"><i class="fa-solid fa-satellite"></i><span>Radar</span></a></li>
+              <li><a href="alerts.html"><i class="fa-solid fa-bell"></i><span>Alerts</span></a></li>
+              <li><a href="air-quality.html"><i class="fa-solid fa-smog"></i><span>Air Quality</span></a></li>
+              <li><a href="compare.html"><i class="fa-solid fa-scale-balanced"></i><span>Compare</span></a></li>
+              <li><a href="favorites.html"><i class="fa-solid fa-heart"></i><span>Favorites</span></a></li>
+            </ul>
+          </nav>
+        </div>
+    </aside>
+
+    <div class="container">
+        <h1 class="title">Hourly Weather Forecast</h1>
+        <div class="hourly-container" id="hourly-container">
+            <div class="time-selector">
+                <button class="time-btn active" data-hours="24">24 Hours</button>
+                <button class="time-btn" data-hours="48">48 Hours</button>
+                <button class="time-btn" data-hours="72">72 Hours</button>
+            </div>
+            <div class="hourly-scroll-container" id="hourly-scroll-container">
+                <!-- Hourly forecast items will be added here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="hourly-forecast.js"></script>
+    <script>
+  // Find the part of the code that creates hourly items
+  document.addEventListener('DOMContentLoaded', function() {
+    const originalRenderFunction = window.displayHourlyForecast;
+    
+    if (typeof originalRenderFunction === 'function') {
+      window.displayHourlyForecast = function(data) {
+        hourlyContainer.innerHTML = "";
+
+        // OpenWeatherMap provides forecast in 3-hour steps
+        const hourlyData = data.list.slice(0, Math.ceil(hoursToShow / 3));
+
+        hourlyData.forEach((item) => {
+          const date = new Date(item.dt * 1000);
+          const hour = date.getHours();
+          const formattedHour = hour === 0 ? "12 AM" : hour === 12 ? "12 PM" : hour < 12 ? `${hour} AM` : `${hour - 12} PM`;
+
+          const temp = Math.round(item.main.temp);
+          const weather = item.weather[0];
+          const iconUrl = `https://openweathermap.org/img/wn/${weather.icon}.png`;
+          const windSpeed = Math.round(item.wind.speed);
+          const humidity = item.main.humidity;
+
+          const hourlyItem = document.createElement("div");
+          hourlyItem.classList.add("hourly-item");
+
+          hourlyItem.innerHTML = `
+            <div class="time">${formattedHour}</div>
+            <div class="date">${date.toLocaleDateString(undefined, { month: "short", day: "numeric" })}</div>
+            <img src="${iconUrl}" alt="${weather.description}" class="weather-icon"/>
+            <div class="temp">${temp}°C</div>
+            <div class="details-container">
+              <div class="details">${weather.description}</div>
+              <div class="details">Wind: ${windSpeed} km/h</div>
+              <div class="details">Humidity: ${humidity}%</div>
+            </div>
+          `;
+
+          hourlyContainer.appendChild(hourlyItem);
+        });
+      };
+    }
+  });
+</script>
+</body>
+</html>
